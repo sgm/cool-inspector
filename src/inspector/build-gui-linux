@@ -1,0 +1,20 @@
+#!/bin/bash
+
+cd ..
+#./build
+
+cd inspector
+rm -f *.cmi *.cmo *.cmx *.o
+ocamlfind ocamlopt -c -package lablgtk2 file.ml
+ocamlfind ocamlopt -c strings.ml
+ocamlfind ocamlopt -c -package lablgtk2 lang.ml
+ocamlfind ocamlopt -c -package lablgtk2 icons.ml
+ocamlfind ocamlopt -c -package cairo2 -I .. visualization.ml
+# ocamlfind ocamlopt -c -package lablgtk2 -I .. multipaned.ml
+ocamlfind ocamlopt -c -package lablgtk2 -I .. dialog.ml
+ocamlfind ocamlopt -c -package camlp4,lablgtk2,cairo2 -I .. ui.ml
+
+ocamlfind ocamlopt -o cinspect.bin -package camlp4,lablgtk2,cairo2 -linkpkg \
+dynlink.cmxa camlp4lib.cmxa lablgtk.cmxa gtkInit.cmx lablgtksourceview2.cmxa cairo_gtk.cmxa \
+../support.cmx ../sig.cmx ../token.cmx ../lexer.cmx ../store.cmx ../environment.cmx ../ast.cmx ../error.cmx ../native.cmx ../gram.cmx ../parser.cmx ../type.cmx ../eval.cmx ../printty.cmx \
+strings.cmx lang.cmx file.cmx icons.cmx visualization.cmx dialog.cmx ui.cmx

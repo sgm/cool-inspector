@@ -1,0 +1,4 @@
+sudo apt-get install ocaml ocaml-libs opam gtksourceview
+
+opam init
+opam install lablgtk 

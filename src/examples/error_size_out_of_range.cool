@@ -1,0 +1,7 @@
+class Main() extends IO() {
+  {
+    new ArrayAny(-1) match {
+      case null => ()
+    }
+  };
+}

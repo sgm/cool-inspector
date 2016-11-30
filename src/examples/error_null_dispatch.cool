@@ -1,0 +1,6 @@
+class Main() extends IO() {
+  {
+    var a : ArrayAny = null; 
+    out_int(a.length())
+  };
+}

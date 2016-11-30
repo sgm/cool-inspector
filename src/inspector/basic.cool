@@ -1,0 +1,49 @@
+class Any() extends native {
+  def clone() : Any = native;
+  def equals(a : Any) : Boolean = native;
+  def abort() : Nothing = native;
+}
+
+class IO() {
+  def is_null(a : Any) : Boolean = a match {
+    case null => true
+    case a : Any => false
+  };
+
+  def out_string(s : String) : Unit = native;
+  def out_int(i : Int) : Unit = out_string(i.to_string());
+  def out_nl() : Unit = out_string("\n");
+
+  def in_string() : String = native;
+  def in_int() : Int = in_string().to_int();
+}
+
+class Unit() { }
+
+class Int() {
+  def abs() : Int = if (this < 0) -this else this;
+  def to_string() : String = native;
+}
+
+class Boolean() { }
+
+class String() {
+  var data = native;
+
+  def length() : Int = native;
+  def concat(s : String) : String = native;
+  def substring(start: Int, len: Int) : String = native;
+  def to_int() : Int = native;
+
+  def get(i : Int) : String = substring(i, 1);
+}
+
+class Symbol() { }
+
+class ArrayAny(var length : Int) {
+  var data = native;
+
+  def length() : Int = native;
+  def get(i : Int) : Any = native;
+  def set(i : Int, a : Any) : Unit = native;
+}

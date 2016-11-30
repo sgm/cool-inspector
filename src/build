@@ -1,0 +1,18 @@
+rm -f *.cmi *.cmo *.cmx *.o lexer.ml
+ocamllex lexer.mll
+ocamlopt -c support.mli support.ml
+ocamlopt -I +camlp4 -c sig.ml
+ocamlopt -I +camlp4 -pp camlp4of -c token.mli token.ml
+ocamlopt -I +camlp4 -pp camlp4of -c lexer.mli lexer.ml
+ocamlopt -c store.mli store.ml
+ocamlopt -c environment.mli environment.ml
+ocamlopt -I +camlp4 -c ast.mli ast.ml
+ocamlopt -I +camlp4 -c error.ml
+ocamlopt -I +camlp4 -c native.mli native.ml
+ocamlopt -I +camlp4 -I . -c gram.mli gram.ml
+ocamlopt -I +camlp4 -pp camlp4of -c parser.mli parser.ml
+ocamlopt -I +camlp4 -c type.mli type.ml
+ocamlopt -I +camlp4 -c eval.mli eval.ml
+ocamlopt -I +camlp4 -c printty.mli printty.ml
+ocamlopt -I +camlp4 -c main.ml
+ocamlopt -o coolml.exe -I +camlp4 dynlink.cmxa camlp4lib.cmxa support.cmx sig.cmx token.cmx lexer.cmx store.cmx environment.cmx ast.cmx error.cmx native.cmx gram.cmx parser.cmx type.cmx eval.cmx printty.cmx main.cmx

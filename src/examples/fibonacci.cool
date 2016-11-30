@@ -1,0 +1,23 @@
+class Main() extends IO() {
+  def print_fibonacci(i : Int, v : Int) : Unit = {
+    out_string("fibonacci(");
+    out_int(i);
+    out_string(") = ");
+    out_int(v);
+    out_nl()
+  };
+
+  {
+    var max : Int = 20;
+    var prev : Int = 0;
+    var curr : Int = 1;
+    print_fibonacci(0, prev);
+    var i : Int = 1;
+    while ({ print_fibonacci(i, curr); i < max }) {
+      var next : Int = prev + curr;
+      prev = curr;
+      curr = next;
+      i = i + 1
+    }
+  };
+}

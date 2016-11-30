@@ -7,6 +7,8 @@
 *.cmx
 *.cmxs
 *.cmxa
+lexer.ml
+*.res
 
 # ocamlbuild working directory
 _build/
@@ -14,6 +16,8 @@ _build/
 # ocamlbuild targets
 *.byte
 *.native
+*.exe
+*.bin
 
 # oasis generated files
 setup.data
